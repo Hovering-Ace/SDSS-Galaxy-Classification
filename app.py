@@ -56,31 +56,66 @@
 
 # --------------  code 2 -----------
 
+# from flask import Flask, render_template, request
+# import numpy as np
+# import requests
+# import os
+# import pickle
+
+# MODEL_PATH = "random_forest_model.pkl"
+
+# # Ensure model is downloaded before running
+# def download_model():
+#     file_id = "1P2IFlzyTBNtJuvbQjAGm86w8P2aUAWB6"
+#     if not os.path.exists(MODEL_PATH):
+#         print("Downloading model...")
+#         os.system(f"wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&id={file_id}&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={file_id}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1/p')' -O {MODEL_PATH} && rm -rf /tmp/cookies.txt")
+#     if not os.path.exists(MODEL_PATH):
+#         raise FileNotFoundError("Model file download failed!")
+
+# download_model()
+
+# # Load the model
+# with open(MODEL_PATH, "rb") as model_file:
+#     model = pickle.load(model_file)
+
+
+# # Flask app
+# app = Flask(__name__)
+
+# @app.route('/')
+# def home():
+#     return render_template('index.html')
+
+# @app.route('/predict', methods=['POST'])
+# def predict():
+#     try:
+#         input_data = [float(x) for x in request.form.values()]
+#         input_array = np.array(input_data).reshape(1, -1)
+#         prediction = model.predict(input_array)[0]
+        
+#         return render_template('output.html', prediction=prediction)
+#     except Exception as e:
+#         return f"Error: {str(e)}"
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
 from flask import Flask, render_template, request
 import numpy as np
-import requests
-import os
 import pickle
+import os
 
-MODEL_PATH = "random_forest_model.pkl"
+# Define the model path in Render's persistent storage
+MODEL_PATH = "/data/random_forest_model.pkl"
 
-# Ensure model is downloaded before running
-def download_model():
-    file_id = "1P2IFlzyTBNtJuvbQjAGm86w8P2aUAWB6"
-    if not os.path.exists(MODEL_PATH):
-        print("Downloading model...")
-        os.system(f"wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&id={file_id}&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={file_id}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1/p')' -O {MODEL_PATH} && rm -rf /tmp/cookies.txt")
-    if not os.path.exists(MODEL_PATH):
-        raise FileNotFoundError("Model file download failed!")
-
-download_model()
+# Ensure the model exists before loading
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model not found at {MODEL_PATH}. Please upload it to /data/ on Render.")
 
 # Load the model
 with open(MODEL_PATH, "rb") as model_file:
     model = pickle.load(model_file)
 
-
-# Flask app
 app = Flask(__name__)
 
 @app.route('/')
