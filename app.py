@@ -63,7 +63,8 @@ import pickle
 import os
 
 # URL where the model is stored (Replace with your Google Drive link)
-MODEL_URL = "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID"
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1P2IFlzyTBNtJuvbQjAGm86w8P2aUAWB6"
+
 
 MODEL_PATH = "model/random_forest_model.pkl"
 
