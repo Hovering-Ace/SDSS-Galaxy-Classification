@@ -62,36 +62,22 @@ import requests
 import pickle
 import os
 
+# Google Drive File ID
 file_id = "1P2IFlzyTBNtJuvbQjAGm86w8P2aUAWB6"
-output = "random_forest_model.pkl"
-
-# Download from Google Drive (bypassing large file warning)
-os.system(f"wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&id={file_id}&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={file_id}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1/p')' -O {output} && rm -rf /tmp/cookies.txt")
 MODEL_PATH = "random_forest_model.pkl"
 
-if os.path.exists(model_path):
-    with open(model_path, "rb") as model_file:
+# Download from Google Drive (bypassing large file warning)
+if not os.path.exists(MODEL_PATH):
+    os.system(f"wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&id={file_id}&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={file_id}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1/p')' -O {MODEL_PATH} && rm -rf /tmp/cookies.txt")
+
+# Load the model
+if os.path.exists(MODEL_PATH):
+    with open(MODEL_PATH, "rb") as model_file:
         model = pickle.load(model_file)
 else:
     raise FileNotFoundError("Model file not found!")
 
-# Function to download model if not found locally
-def download_model():
-    if not os.path.exists(MODEL_PATH):
-        print("Downloading model...")
-        os.makedirs("model", exist_ok=True)  # Ensure the model folder exists
-        response = requests.get(MODEL_URL)
-        with open(MODEL_PATH, "wb") as file:
-            file.write(response.content)
-        print("Model downloaded successfully!")
-
-# Call this function before loading the model
-download_model()
-
-# Load the model
-with open(MODEL_PATH, "rb") as model_file:
-    model = pickle.load(model_file)
-
+# Flask app
 app = Flask(__name__)
 
 @app.route('/')
