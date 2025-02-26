@@ -62,11 +62,18 @@ import requests
 import pickle
 import os
 
-# URL where the model is stored (Replace with your Google Drive link)
-MODEL_URL = "https://drive.google.com/uc?export=download&id=1P2IFlzyTBNtJuvbQjAGm86w8P2aUAWB6"
+#file_id = "1P2IFlzyTBNtJuvbQjAGm86w8P2aUAWB6"
+output = "random_forest_model.pkl"
 
+# Download from Google Drive (bypassing large file warning)
+os.system(f"wget --load-cookies /tmp/cookies.txt 'https://docs.google.com/uc?export=download&id={file_id}&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id={file_id}' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\\1/p')' -O {output} && rm -rf /tmp/cookies.txt")
+MODEL_PATH = "random_forest_model.pkl"
 
-MODEL_PATH = "model/random_forest_model.pkl"
+if os.path.exists(model_path):
+    with open(model_path, "rb") as model_file:
+        model = pickle.load(model_file)
+else:
+    raise FileNotFoundError("Model file not found!")
 
 # Function to download model if not found locally
 def download_model():
