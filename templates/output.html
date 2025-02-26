@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Classification Result</title>
+    <link rel="stylesheet" href="/static/forms/styles1.css">
+</head>
+<body>
+    <div class="background">
+        <canvas id="stars"></canvas>
+    </div>
+    
+    <div class="container">
+        <h1 class="title">Galaxy Classification Result</h1>
+
+        <div class="result-box">
+            <p class="prediction-text">Predicted Galaxy Type:</p>
+            <p class="galaxy-name">
+                {% if prediction == 1 %}
+                    <span class="starburst-text">Starburst Galaxy</span>
+                    <img src="/static/assets/starburst.jpg" class="galaxy-image">
+                {% else %}
+                    <span class="starforming-text">Starforming Galaxy</span>
+                    <img src="/static/assets/starforming.jpg" class="galaxy-image">
+                {% endif %}
+            </p>
+        </div>
+
+        <a href="/" class="animated-btn">Try Again</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="/static/forms/animations1.js"></script>
+</body>
+</html>

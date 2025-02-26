@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Classification</title>
+    <link rel="stylesheet" href="/static/forms/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Galaxy Classification</h1>
+        <form action="/predict" method="post" class="form-box">
+            <label>r-band Magnitude:</label>
+            <input type="text" name="r" required>
+
+            <label>i-band Magnitude:</label>
+            <input type="text" name="i" required>
+
+            <label>z-band Magnitude:</label>
+            <input type="text" name="z" required>
+
+            <label>Petrosian Radius g:</label>
+            <input type="text" name="petroRad_g" required>
+
+            <label>Petrosian Radius i:</label>
+            <input type="text" name="petroRad_i" required>
+
+            <label>Petrosian Radius r:</label>
+            <input type="text" name="petroRad_r" required>
+
+            <label>Petrosian R50 u:</label>
+            <input type="text" name="petroR50_u" required>
+
+            <label>Petrosian R50 g:</label>
+            <input type="text" name="petroR50_g" required>
+
+            <label>Petrosian R50 i:</label>
+            <input type="text" name="petroR50_i" required>
+
+            <label>Petrosian R50 r:</label>
+            <input type="text" name="petroR50_r" required>
+
+            <button type="submit" class="submit">Classify Galaxy</button>
+        </form>
+    </div>
+    <div id="result"></div>
+    <canvas id="stars"></canvas>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="/static/forms/animations.js"></script>
+</body>
+</html>

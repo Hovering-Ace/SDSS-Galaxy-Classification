@@ -1,0 +1,77 @@
+html{
+    background-color: black;
+}
+body {
+    
+    background: url('../assets/bg.gif') no-repeat center center fixed;
+    background-size: cover; 
+    height: 100vh;
+    margin: 0;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    
+} 
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+canvas {
+    display: block;
+}
+
+.container {
+
+    text-align: center;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    text-shadow: 0 0 15px cyan;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgb(203, 196, 196);
+    border-radius: 5px;
+    text-align: center;
+}
+
+input:focus {
+    box-shadow: 0 0 10px cyan;
+}
+.submit{
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(90deg, #0f0c0f, #00ffff);
+    border-radius: 25px;
+    transition: transform 0.2s;
+}
+.submit:hover{
+    transform: scale(0.8);
+}
+
+
