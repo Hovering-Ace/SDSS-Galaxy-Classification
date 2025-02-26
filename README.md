@@ -18,11 +18,26 @@ The app is built using **Flask** for the web interface and a **Random Forest Cla
 - **Backend:** Flask (Python)
 - **Machine Learning Model:** Random Forest Classifier (Scikit-Learn)
 - **Deployment:** Local Server / Gunicorn for Production
-
----
-
+  
+----
 ## 🛠️ **Setup & Installation**
+## 🚀 **Deployment  **
+
+This project is deployed on **Render**! You can access the live application here:  
+
+🔗 **[SDSS Galaxy Classification - Live Demo](https://sdss-galaxy-classification.onrender.com)**  
+
+✅ Hosted on **Render** for seamless access.  
+📌 Click the link above to explore the model in action!
+
 ### **1️⃣ Clone the Repository**
 ```bash
 git clone https://github.com/yourusername/galaxy-classification.git
 cd galaxy-classification
+
+
+
+
+
+
+  
