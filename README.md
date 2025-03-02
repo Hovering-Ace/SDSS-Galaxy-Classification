@@ -30,6 +30,12 @@ This project is deployed on **Render**! You can access the live application here
 ✅ Hosted on **Render** for seamless access.  
 📌 Click the link above to explore the model in action!
 
+**OUTPUTS**
+
+![Screenshot 2025-02-26 225331](https://github.com/user-attachments/assets/9da71246-2d23-402d-a7d0-994019470756)
+
+![Screenshot 2025-02-26 225638](https://github.com/user-attachments/assets/222ea6a3-6c69-41cc-a30d-0dcf3b45adb3)
+
 ### **1️⃣ Clone the Repository**
 ```bash
 git clone https://github.com/yourusername/galaxy-classification.git
@@ -39,8 +45,4 @@ cd galaxy-classification
 
 
 
-**OUTPUTS**
 
-![Screenshot 2025-02-26 225331](https://github.com/user-attachments/assets/9da71246-2d23-402d-a7d0-994019470756)
-
-![Screenshot 2025-02-26 225638](https://github.com/user-attachments/assets/222ea6a3-6c69-41cc-a30d-0dcf3b45adb3)
